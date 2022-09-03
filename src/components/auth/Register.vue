@@ -9,7 +9,10 @@
  
  <script>
     export default {
-     name:"Register"
+     name:"Register",
+     mounted(){
+            console.log('Register Component Mounted');
+        },
     }
  </script>
  

@@ -9,7 +9,10 @@
  
  <script>
     export default {
-     name:"Logout"
+     name:"Logout",
+     mounted(){
+            console.log('Logout Component Mounted');
+        },
     }
  </script>
  

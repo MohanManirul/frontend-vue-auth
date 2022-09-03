@@ -41,6 +41,9 @@
             }
         }
      },
+     mounted(){
+            console.log('Login Component Mounted');
+        },
      methods:{
         login(){
             console.log('login hited');
