@@ -48,6 +48,7 @@
         login(){
             console.log('login hited');
             this.$store.dispatch('login')
+            console.log('login hited after dispatch');
             
         }
      }
@@ -57,3 +58,5 @@
  <style scoped>
  
  </style>
+
+ 
