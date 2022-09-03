@@ -1,13 +1,13 @@
 <template>
-  <Header title="Home" />
+  <Navbar title="Home" />
   <router-view></router-view>
 </template>
 <script>
-import Header from './components/Header.vue'
+import Navbar from './components/Navbar.vue'
 export default {
-  name:'App',
+ 
   components: {
-    Header 
+    Navbar 
     
   }
 };
