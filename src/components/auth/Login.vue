@@ -43,7 +43,7 @@
      },
      methods:{
         login(){
-            console.log('Login')
+            this.$store.dispatch('login')
         }
      }
     }
