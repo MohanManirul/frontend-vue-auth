@@ -43,7 +43,9 @@
      },
      methods:{
         login(){
+            console.log('login hited');
             this.$store.dispatch('login')
+            
         }
      }
     }
