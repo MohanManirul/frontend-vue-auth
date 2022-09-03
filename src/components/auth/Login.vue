@@ -5,21 +5,21 @@
                <div class="card">
                     <div class="card-header text-center">Login Here</div>
                     <div class="card-body">
-                        <form>
+                        <form @submit.prevent="login">
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email" v-model="credential.email">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" v-model="credential.password">
                             </div>
                             <div class="mb-3 form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
                             </div>
                             <div class="text-end">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Login</button>
                             </div>
                             
                         </form> 
@@ -32,7 +32,20 @@
  
  <script>
     export default {
-     name:"Login"
+     name:"Login",
+     data(){
+        return{
+            credential:{
+                email: null,
+                password: null
+            }
+        }
+     },
+     methods:{
+        login(){
+            console.log('Login')
+        }
+     }
     }
  </script>
  
