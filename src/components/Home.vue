@@ -11,6 +11,7 @@
     export default {
         name:'Home', // normally the name of file
         data(){
+            
         },
         mounted(){
             console.log('Home Page Component Mounted');
