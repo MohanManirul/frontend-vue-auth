@@ -1,10 +1,11 @@
 
 
 import Home from '../components/Home.vue';
-import AboutUs from '../components/AboutUs.vue';
+import Blog from '../components/Blog.vue';
 import Login from '../components/auth/Login.vue'; 
 import Register from '../components/auth/Register.vue';
 import Logout from '../components/auth/Logout.vue';
+import store from '../store'
 
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -16,14 +17,20 @@ const routes = [
         component : Home
     },
     {
-        name : 'AboutUs',
-        path : '/about_us',
-        component : AboutUs
+        name : 'Blog',
+        path : '/blog',
+        component : Blog,
+        meta:{
+            requiresAuth : true
+        }
     },
     {
         name : 'Login',
         path : '/login',
-        component : Login
+        component : Login,
+        meta:{
+            visitor : true
+        }
     },   
     {
         name : 'Register',
@@ -33,7 +40,10 @@ const routes = [
     {
         name : 'Logout',
         path : '/logout',
-        component : Logout
+        component : Logout,
+        meta:{
+            requiresAuth : true
+        }
     },
 ] ;
 
@@ -42,4 +52,25 @@ const router = createRouter({
     routes
 });
 
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+      if (!store.getters.loggedIn) {
+        next({
+            name:'Login'
+        })
+      } else {
+        next()
+      }
+    }else if(to.matched.some(record => record.meta.visitor)) {
+            if (store.getters.loggedIn) {
+              next({
+                  name:'Home'
+              })
+            } else {
+              next()
+            }
+    } else {
+      next()
+    }
+  })
 export default  router ;

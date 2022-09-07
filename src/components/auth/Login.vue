@@ -36,8 +36,8 @@
      data(){
         return{
             credential:{
-                email: null,
-                password: null
+                email: 'admin@gmail.com',
+                password: '123456'
             }
         }
      },
@@ -46,10 +46,11 @@
         },
      methods:{
         login(){
-            console.log('login hited');
-            this.$store.dispatch('login')
-            console.log('login hited after dispatch');
-            
+            this.$store.dispatch('login', this.credential).then(()=>{
+               this.$router.push({
+                name: 'Home'
+               })  
+            })           
         }
      }
     }
