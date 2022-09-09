@@ -51,4 +51,3 @@ const store = createStore({
     modules:{}
 })
 export default  store ;
-export default  store ;
