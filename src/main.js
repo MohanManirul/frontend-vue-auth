@@ -6,5 +6,7 @@ import store from './store/index'
 import "./assets/scss/app.scss";
 
 const app = createApp(App)
+// use the store in the App
+app.use(store)
 app.use(routes)
 app.mount('#app')
