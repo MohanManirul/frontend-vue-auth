@@ -35,6 +35,19 @@ const store = createStore({
           })
          })
         },
+        register(context , data){
+         return new Promise( (resolve , reject)=>{
+          axios.post('http://127.0.0.1:8000/api/v1/register',{
+            name:data.name,
+            email:data.email,
+            password:data.password,
+          }).then(res=>{
+            resolve(res)
+          }).catch(error=>{
+            reject(error)
+          })
+         })
+        },
         logout(context){
           axios.defaults.headers.common['Authorization'] = 'Bearer '+ context.state.token
          return new Promise( (resolve , reject)=>{
