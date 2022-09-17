@@ -17,7 +17,7 @@
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password" v-model="FormData.password">
-                            </div>
+                            </div>                         
                             <div class="mb-3 form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
@@ -55,9 +55,10 @@
         initForm(){
             return{
                 name : '',
-                email: 'admin@gmail.com',
-                password: '123456'
+                email: '',
+                password: '',
             }
+            
         }
      }
     }
