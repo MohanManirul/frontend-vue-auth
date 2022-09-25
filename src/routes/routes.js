@@ -1,4 +1,5 @@
 import Home from '../components/Home.vue';
+import FileUpload from '../components/FileUpload.vue';
 import Blog from '../components/Blog.vue';
 import Login from '../components/auth/Login.vue'; 
 import Register from '../components/auth/Register.vue';
@@ -19,8 +20,8 @@ const routes = [
         path : '/blog',
         component : Blog,
         meta:{
-            requiresAuth : true
-        }
+          visitor : true
+      }
     },
     {
         name : 'Login',
@@ -42,6 +43,11 @@ const routes = [
         meta:{
             requiresAuth : true
         }
+    },
+    {
+        name : 'FileUpload',
+        path : '/file-upload',
+        component : FileUpload,       
     },
 ] ;
 

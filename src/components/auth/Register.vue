@@ -5,7 +5,7 @@
                <div class="card">
                     <div class="card-header text-center">Register Here</div>
                     <div class="card-body">
-                        <form @submit.prevent="register">
+                        <form @submit.prevent="register" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="name" v-model="FormData.name">
@@ -17,7 +17,11 @@
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password" v-model="FormData.password">
-                            </div>                         
+                            </div>     
+                            <div class="mb-3">
+                                <input type="file" class="form-control" @change="onChange">
+                            </div>
+
                             <div class="mb-3 form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">Check me out</label>

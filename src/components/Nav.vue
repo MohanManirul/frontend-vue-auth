@@ -23,6 +23,10 @@
                     <li class="nav-item" v-if="loggedIn">
                         <router-link class="nav-link" to="/logout">Logout</router-link>
                     </li>
+
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/file-upload">File Upload</router-link>
+                    </li>
                 </ul>
                 </div>
             </div>
