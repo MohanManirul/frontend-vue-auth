@@ -1,58 +1,55 @@
 <template>
     <div class="container">
-        <h2>File Upload Page</h2>
-        <form @submit.prevent="uploadFile" enctype="multipart/form-data">
-               
-            <div class="mb-3">
-                <input type="file" id="file" ref="file" class="form-control" @change="onChange" >
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Laravel Vue JS File Upload Demo</div>
+                    <div class="card-body">
+                        <div v-if="success != ''" class="alert alert-success">
+                            {{success}}
+                        </div>
+                        <form @submit="formSubmit" enctype="multipart/form-data">
+                            <input type="file" class="form-control" v-on:change="onChange">
+                            <button class="btn btn-primary btn-block">Upload</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-
-            <div class="text-end">
-                <button type="submit" class="btn btn-primary">Upload</button>
-            </div>
-            
-        </form> 
+        </div>
     </div>
-   
 </template>
-
 <script>
     import axios from 'axios';
     export default {
-        name:'FileUpload', // normally the name of file
-        data(){
-            return{
-                file:''
-            }
+        data() {
+            return {
+                name: '',
+                file: '',
+                success: ''
+            };
         },
-        methods:{
+        methods: {
             onChange(e) {
                 this.file = e.target.files[0];
             },
-            async uploadFile(){
-                this.file = this.$refs.file.files[0];
-                let formData = new FormData();
-                formData.append('file',this.file);
-                this.$refs.file.value = '' ;
+            formSubmit(e) {
+                e.preventDefault();
+                let existingObj = this;
                 const config = {
-                headers:{'Content-Type' : 'multipart/form-data'}
-                     };
-                await axios.post('http://127.0.0.1:8000/api/v1/imageUpload', formData,config,
-                    ).then(function(response){
-                    if(!response.data){
-                        alert('File not Uploaded !');
-                    }else{
-                        alert('File uploaded Successfully...!')
+                    headers: {
+                        'content-type': 'multipart/form-data'
                     }
-                }).catch(function(error){
-                    console.log(error);
-                });
+                }
+                let data = new FormData();
+                data.append('file', this.file);
+                axios.post('http://127.0.0.1:8000/api/v1/imageUpload', data, config)
+                    .then(function (res) {
+                        existingObj.success = res.data.success;
+                    })
+                    .catch(function (err) {
+                        existingObj.output = err;
+                    });
             }
-        },
-        mounted(){
-           
-            console.log('FileUpload Component Mounted');
         }
     }
-   
 </script>
